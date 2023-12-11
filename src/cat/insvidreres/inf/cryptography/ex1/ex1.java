@@ -28,8 +28,9 @@ public class ex1 {
     }
 
     public static void main(String[] args) {
-
-        SecretKey skey = keyGeneration("DES", 56);
-        System.out.println("Clau DES 256 bits generada: " + base64encode(skey));
+        String algorythm = "AES";
+        int keySize = 128;
+        SecretKey skey = keyGeneration(algorythm, keySize);
+        System.out.println("Clau "+ algorythm + " de " + keySize + " bits generada: " + base64encode(skey));
     }
 }
