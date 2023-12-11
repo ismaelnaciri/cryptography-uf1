@@ -81,8 +81,14 @@ public class IsmaUtils {
         SecretKey sKey = null;
 
         try {
+            SecureRandom secureRandom = new SecureRandom();
+            byte[] randomBytes = new byte[keyLength / 8];
+            secureRandom.nextBytes(randomBytes);
+
             byte[] keyBytes = new byte[keyLength / 8];
-            System.arraycopy(hashBytes, 0, keyBytes, 0, keyBytes.length);
+            for (int i = 0; i < keyBytes.length; i++) {
+                keyBytes[i] = (byte) (hashBytes[i] ^ randomBytes[i]);
+            }
 
             sKey = new SecretKeySpec(keyBytes, algorithm);
         } catch (IllegalArgumentException ex) {
