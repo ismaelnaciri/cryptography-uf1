@@ -103,7 +103,7 @@ public class IsmaUtils {
         String hashString = "";
 
         try {
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 
             byte[] data = text.getBytes(StandardCharsets.UTF_8);
             byte[] hash = messageDigest.digest(data);
